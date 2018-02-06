@@ -7,7 +7,7 @@ def file_handling():
 	print("5- Exit\n\n***********: \n")
 	choice = input(":")
 	if (choice == 1):
-		for filename in os.listdir("D:\UNIVERSITY DOCUMENTS\SEMESTER NUMBER 6\Operating System"):
+		for filename in os.listdir("D:\UNIVERSITY DOCUMENTS\SEMESTER NUMBER 6\Operating System\Files-Handler"):
 			print filename
 		file_handling()
 
@@ -28,7 +28,11 @@ def file_handling():
 		file_text = raw_input("type the Content to write in the file: ")
 		count = 1
 		while (os.path.isfile(filename)):
-			filename = filename + "(" + str(count) + ")"
+			base = os.path.basename(filename)
+			filename = os.path.splitext(base)[0]
+			extension = os.path.splitext(base)[1]
+			filename = filename + "(" + str(count) + ")" + extension
+			print filename
 		with open(filename,'w+') as myfile:
 			myfile.write(file_text)
 			myfile.close()
